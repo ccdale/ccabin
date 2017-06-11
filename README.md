@@ -12,6 +12,21 @@ for a set of workspaces that are 4 wide and 1 deep:
 gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize 4
 gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize 1
 ```
+To run this script at start up you can create a 'Desktop Entry' file for the
+window manager:
+```
+echo "[Desktop Entry]
+Type=Application
+Exec=$(HOME)/bin/unity-startup-windows.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=unity-startup-windows
+Name=unity-startup-windows
+Comment[en_US]=
+Comment=
+" > ~/.config/autostart/unity-startup-windows.desktop
+ ```
 
 
 [modeline]: # ( vim: set fenc=utf-8 spell spl=en tw=76: )
