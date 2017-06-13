@@ -4,10 +4,17 @@ linux desktop.
 
 ## unity-startup-windows.sh
 script that uses `xrandr` and `wmctrl` to work out the screen size and
-number of different workspaces on a Ubuntu Unity desktop.
+number of different workspaces on a Ubuntu Unity desktop.  Unity doesn't
+really have different workspaces, all windows are placed within one massive
+field, so a spot of integer arithmetic is required to work out where to
+place the windows.
+
+I use this to auto-start Gvim, Firefox and Slack and place them
+onto workspaces 2, 3 and 4.
 
 You can set the number of workspaces in Unity with the gsettings command, so
-for a set of workspaces that are 4 wide and 1 deep:
+for a set of workspaces that are 4 wide and 1 deep, which on my 1920x1080
+screen gives a desktop size of 7680x1080:
 ```
 gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize 4
 gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize 1
@@ -17,7 +24,7 @@ window manager:
 ```
 echo "[Desktop Entry]
 Type=Application
-Exec=$(HOME)/bin/unity-startup-windows.sh
+Exec=${HOME}/bin/unity-startup-windows.sh
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
