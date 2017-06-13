@@ -17,9 +17,9 @@ function checkint()
 }
 function checkstr()
 {
-  str=$1
+  xstr=$1
   xname=$2
-  if [ ${#str} < 1 ]; then
+  if [ ${#xstr} -lt 1 ]; then
     echo "Empty string: $xname" >&2
     exit 1
   fi
