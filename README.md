@@ -71,5 +71,4 @@ Comment=
 " > ~/.config/autostart/firefox.desktop
  ```
 
-## start-and-place.sh
 [modeline]: # ( vim: set fenc=utf-8 spell spl=en tw=76: )
