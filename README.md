@@ -36,7 +36,7 @@ Comment=
  ```
 
 ## start-and-place.sh
-This is similiar to unity-startup-windows.sh except that it starts an
+This is similiar to `unity-startup-windows.sh` except that it starts an
 individual program and places it on the required desktop
 ```
 $ start-and-place.sh -h
