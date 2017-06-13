@@ -35,5 +35,18 @@ Comment=
 " > ~/.config/autostart/unity-startup-windows.desktop
  ```
 
+## start-and-place.sh
+This is similiar to unity-startup-windows.sh except that it starts an
+individual program and places it on the required desktop
+```
+$ start-and-place.sh -h
+start-and-place.sh <program> <title> <desktop no.>
+
+  Places the <program> with the (partial) window
+  title <title> on desktop <desktop no.>
+
+  i.e. start-and-place.sh gvim GVIM 2 
+    will place the gvim window on desk 2
+```
 
 [modeline]: # ( vim: set fenc=utf-8 spell spl=en tw=76: )
