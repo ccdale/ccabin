@@ -40,7 +40,7 @@ function movewin()
   #    x,y,w,h can be -1 to use current value
   xid=$(winid $1)
   xpos=$(( ( ( $2 * hsz ) - hsz ) + hmarg ))
-  WMCTRL -ir $xid -e 0,$xpos,-1,-1,-1
+  $WMCTRL -ir $xid -e 0,$xpos,-1,-1,-1
 }
 
 ME=${0##*/}
