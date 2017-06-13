@@ -54,5 +54,22 @@ start-and-place.sh <program> <title> <desktop no.>
   i.e. start-and-place.sh gvim GVIM 2 
     will place the gvim window on desk 2
 ```
+and make a Desktop Entry file for each program you want started, calling it
+the name of the progam you wish to start (to avoid confusion):
 
+```
+echo "[Desktop Entry]
+Type=Application
+Exec=${HOME}/bin/start-and-place.sh firefox Firefox 3
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Firefox
+Name=Firefox
+Comment[en_US]=
+Comment=
+" > ~/.config/autostart/firefox.desktop
+ ```
+
+## start-and-place.sh
 [modeline]: # ( vim: set fenc=utf-8 spell spl=en tw=76: )
