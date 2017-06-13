@@ -2,6 +2,12 @@
 Some useful (and probably not so useful) scripts for `$HOME/bin/` on your
 linux desktop.
 
+I link these from the repository to my bin directory, that way I always get
+the up-to-date version running:
+```
+ln -s ${HOME}/src/ccabin/start-and-place.sh ${HOME}/bin/
+```
+
 ## unity-startup-windows.sh
 script that uses `xrandr` and `wmctrl` to work out the screen size and
 number of different workspaces on a Ubuntu Unity desktop.  Unity doesn't
