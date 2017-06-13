@@ -84,7 +84,7 @@ title=$2
 checkstr $title title
 desk=$3
 checkint $desk desk
-if ! which prog >/dev/null 2>&1; then
+if ! which $prog >/dev/null 2>&1; then
   echo "cannot start $prog, not found in path" >&2
   exit 1
 fi
