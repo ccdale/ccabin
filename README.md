@@ -8,6 +8,17 @@ the up-to-date version running:
 ln -s ${HOME}/src/ccabin/start-and-place.sh ${HOME}/bin/
 ```
 
+## vpnonoff.sh
+script to toggle, turn on or turn off your Network Manager based VPN
+connection.
+Hard link it to the following names and it'll do the right thing:
+```
+togglevpn
+vpnstart
+vpnstop
+```
+
+
 ## unity-startup-windows.sh
 script that uses `xrandr` and `wmctrl` to work out the screen size and
 number of different workspaces on a Ubuntu Unity desktop.  Unity doesn't
@@ -51,7 +62,7 @@ start-and-place.sh <program> <title> <desktop no.>
   Places the <program> with the (partial) window
   title <title> on desktop <desktop no.>
 
-  i.e. start-and-place.sh gvim GVIM 2 
+  i.e. start-and-place.sh gvim GVIM 2
     will place the gvim window on desk 2
 ```
 and make a Desktop Entry file for each program you want started, calling it
