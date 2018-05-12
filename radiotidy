@@ -1,0 +1,58 @@
+#!/bin/bash
+
+trap "cleanup 15" SIGINT SIGTERM
+
+oldradio=/home/chris/radio
+radioroot=/home/chris/radio
+
+function cleanup()
+{
+  if [ ${#tmpdir} -gt 0 ]; then
+    if [ -d "${tmpdir}" ]; then
+      msg "Removing temporary directory: ${tmpdir}"
+      if rm -rf "${tmpdir}"; then
+        msg "completed"
+      fi
+    fi
+  fi
+  exit $1
+}
+function msg()
+{
+  echo "$@"
+  logger -t MVRADIO -p local0.info -- "$@"
+}
+function emsg()
+{
+  echo "$@" >&2
+  logger -t MVRADIO -p local0.error -- "$@"
+}
+
+cd $radioroot
+newfiles=($(ls *.m4a))
+if [ ${#newfiles[@]} -gt 0 ]; then
+  for fn in ${newfiles[@]}; do
+    if [ -f "$fn" ]; then
+      title=$(basename $fn|sed 's/^\([A-Za-z0-9_]\{1,\}\)-s*.*$/\1/')
+      if [ "$title" = "$fn" ]; then
+        emsg "Failed to generate title for $fn"
+      else
+        fnroot=${fn%%.m4a}
+        nfo=${fnroot}.nfo
+        if [ ${#title} -gt 0 ]; then
+          dest="${radioroot}/$title"
+          if [ ! -d "$dest" ]; then
+            msg "Making a new directory for $dest"
+            mkdir -p "$dest"
+          fi
+          msg "Moving $fn to $dest"
+          mv "$fn" "$dest"
+          if [ -f "$nfo" ]; then
+            msg "Moving $nfo to $dest"
+            mv  "$nfo" "$dest"
+          fi
+        fi
+      fi
+    fi
+  done
+fi

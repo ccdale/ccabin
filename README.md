@@ -20,6 +20,12 @@ vpnstart
 vpnstop
 ```
 
+## pvr, update-pvr, cleanpvr.sh, radiotidy
+Scripts to utilise the wonderful [get_iplayer](https://github.com/get-iplayer/get_iplayer) as a PVR.
+As the BBC regularly blocks the AirVPN I use, I had to also write the off/on
+scripts above to ensure that the VPN wasn't running while downloading TV
+programs - strangely, the BBC don't block you downloading radio programs
+while the VPN is running.
 
 ## unity-startup-windows.sh
 script that uses `xrandr` and `wmctrl` to work out the screen size and

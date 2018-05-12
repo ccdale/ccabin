@@ -1,0 +1,20 @@
+#!/bin/bash
+gdir=/home/chris/studio-home/src/get_iplayer/git/get_iplayer
+# current=/home/chris/studio-home/src/get_iplayer/git/current
+cd $gdir
+git pull >/dev/null
+vers=$(git tag |tail -n 1)
+# echo $vers
+cvers=$(/home/chris/bin/get_iplayer |head -n 1|cut -d, -f1|cut -d" " -f2)
+# echo $cvers
+if [[ $cvers != $vers ]]; then
+    echo "update required: current: $cvers, latest: $vers"
+    cd $gdir
+    git checkout $vers
+    cp get_iplayer get_iplayer.cgi ~/bin/
+    chmod +x ~/bin/get_iplayer
+    chmod +x ~/bin/get_iplayer.cgi
+    git checkout master
+else
+    echo "up to date: current: $cvers, latest: $vers"
+fi

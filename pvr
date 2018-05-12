@@ -1,0 +1,27 @@
+#!/bin/bash
+logfn=$HOME/logs/getiplayerpvr.log
+$HOME/bin/vpnstop
+if ping -c 3 google.co.uk >/dev/null 2>&1
+then
+    echo "network ok" >>$logfn
+    if pgrep get_iplayer >/dev/null 2>&1
+    then
+        echo "get_iplayer already running." >&2
+        exit 1
+    else
+        $HOME/bin/get_iplayer-logrotate >>$logfn
+        $HOME/bin/cleanpvr.sh
+	$HOME/bin/update-pvr
+        $HOME/bin/get_iplayer --pvr >>$logfn 2>&1
+        # get_iplayer has started to create filenames
+        # wrapped in quotes
+        detox /home/chris/radio
+        detox /home/chris/Videos/tv
+        $HOME/bin/radiotidy >>$logfn
+        ls -ltr $HOME/radio |tail -n 10 >>$logfn
+    fi
+else
+    echo "network problems, cannot ping google.co.uk" >&2
+    exit 2
+fi
+$HOME/bin/vpnstart
