@@ -27,6 +27,10 @@ scripts above to ensure that the VPN wasn't running while downloading TV
 programs - strangely, the BBC don't block you downloading radio programs
 while the VPN is running.
 
+Now I can run the `pvr` script from cron in the middle of the night, knowing
+that it'll stop the VPN, download the programs and start the VPN when it
+completes, hurrah!
+
 ## unity-startup-windows.sh
 script that uses `xrandr` and `wmctrl` to work out the screen size and
 number of different workspaces on a Ubuntu Unity desktop.  Unity doesn't
