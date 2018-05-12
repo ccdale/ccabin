@@ -11,6 +11,8 @@ ln -s ${HOME}/src/ccabin/start-and-place.sh ${HOME}/bin/
 ## vpnonoff.sh
 script to toggle, turn on or turn off your Network Manager based VPN
 connection.
+To use it you'll need to configure the name of your VPN connection exactly
+as the output of `nmcli` gives it (see the top of the script).
 Hard link it to the following names and it'll do the right thing:
 ```
 togglevpn
