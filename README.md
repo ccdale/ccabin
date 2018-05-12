@@ -22,7 +22,7 @@ vpnstop
 
 ## pvr, update-pvr, cleanpvr.sh, radiotidy
 Scripts to utilise the wonderful [get_iplayer](https://github.com/get-iplayer/get_iplayer) as a PVR.
-As the BBC regularly blocks the AirVPN I use, I had to also write the off/on
+As the BBC regularly blocks the [AirVPN](https://airvpn.org/) I use, I had to also write the off/on
 scripts above to ensure that the VPN wasn't running while downloading TV
 programs - strangely, the BBC don't block you downloading radio programs
 while the VPN is running.
