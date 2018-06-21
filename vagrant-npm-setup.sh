@@ -16,7 +16,7 @@ npm
 
 from the ubuntu repositories.
 
-It wil then use npm to install the nodejs virtual env. application 'n'
+It will then use npm to install the nodejs virtual env. application 'n'
 
 Using n it will update nodejs to the current stable version
 

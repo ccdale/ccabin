@@ -8,6 +8,26 @@ the up-to-date version running:
 ln -s ${HOME}/src/ccabin/start-and-place.sh ${HOME}/bin/
 ```
 
+## vagrant-npm-setup.sh
+
+This script will setup a nodejs development vagrant environment in this directory.
+
+It will download the latest version of the ubuntu 18.04 box (if you don't already have it)
+
+It then creates a virtualbox vagrant machine and installs
+* curl
+* git
+* vim-pathogen
+* vim-fugitive
+* nodejs
+* npm
+
+from the ubuntu repositories.
+
+It will then use npm to install the nodejs virtual env. application `n`
+
+Using `n` it will update nodejs to the current stable version
+
 ## vpnonoff.sh
 script to toggle, turn on or turn off your Network Manager based VPN
 connection.
