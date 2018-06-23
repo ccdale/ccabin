@@ -1,5 +1,5 @@
 # HowTo: Vagrant Box based Development Environment
-Use the [vagrant-npm-setup.sh](vagrant-npm-setup.sh) script in this repo as a template.
+Use the [vagrant-npm-setup.sh](vagrant-npm-setup.sh) script in this [repo](https://github.com/ccdale/ccabin) as a template.
 
 The script creates a VM and installs any software you'll need in your base box, the npm script installs:
 ```
