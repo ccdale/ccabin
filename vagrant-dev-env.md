@@ -1,7 +1,7 @@
 # HowTo: Vagrant Box based Development Environment
 Use the [vagrant-npm-setup.sh](vagrant-npm-setup.sh) script in this repo as a template.
 
-Create a VM and install any software you'll need in your base box, the npm script installs:
+The script creates a VM and installs any software you'll need in your base box, the npm script installs:
 ```
 curl
 git
