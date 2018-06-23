@@ -1,5 +1,12 @@
 #!/bin/bash
 [[ -f Vagrantfile ]] && echo "Vagrantfile exists, not overwriting" && exit 1
+rvm=$(VBoxManage list runningvms)
+if [ "X" != "X${rvm}" ]; then
+    echo "There are other running VMs. Cannot continue while they are running, sorry."
+    exit 1
+fi
+
+boxname=${1:npm}
 
 cat - <<EOMSG
 This script will setup a nodejs development vagrant environment in this directory.
@@ -36,9 +43,25 @@ npm cache clean -f
 npm install -g n
 # install the latest stable version of nodejs
 n stable
+echo "zeroing disk"
+dd if=/dev/zero of=BLANKFILE bs=1M
+rm BLANKFILE
 EOCAT
 chmod +x bootstrap.sh
-vagrant init bento/ubuntu-18.04 --box-version 201806.08.0
-sed -i '$i\
-  config.vm.provision :shell, :path => "bootstrap.sh"' Vagrantfile
+vagrant init bento/ubuntu-18.04
+cat - <<'EOCAT2' >Vagrantfile
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure("2") do |config|
+  config.vm.box = "bento/ubuntu-18.04"
+  config.ssh.insert_key = false
+  config.vm.provision :shell, :path => "bootstrap.sh"
+end
+EOCAT2
+vagrant up
+rvm=$(VBoxManage list runningvms|cut -d'"' -f 2)
+vagrant package --base $rvm
+vagrant box add --name ${boxname}-dev --provider virtualbox --force package.box
+rm *
+vagrant init ${boxname}-dev
 vagrant up
