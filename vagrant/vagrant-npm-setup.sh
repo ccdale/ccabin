@@ -65,6 +65,7 @@ vagrant ssh -c 'tar xvzf /vagrant/vim.tgz'
 rvm=$(VBoxManage list runningvms|cut -d'"' -f 2)
 vagrant package --base $rvm
 vagrant box add --name ${boxname}-dev --provider virtualbox --force package.box
+vagrant destroy -f
 rm *
 vagrant init ${boxname}-dev
 vagrant up
