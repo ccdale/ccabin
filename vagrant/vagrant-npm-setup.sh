@@ -61,7 +61,7 @@ Vagrant.configure("2") do |config|
 end
 EOCAT2
 vagrant up
-vagrant ssh tar xvzf /vagrant/vim.tgz
+vagrant ssh -c 'tar xvzf /vagrant/vim.tgz'
 rvm=$(VBoxManage list runningvms|cut -d'"' -f 2)
 vagrant package --base $rvm
 vagrant box add --name ${boxname}-dev --provider virtualbox --force package.box
