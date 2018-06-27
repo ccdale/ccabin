@@ -6,7 +6,7 @@ if [ "X" != "X${rvm}" ]; then
     exit 1
 fi
 
-boxname=${1:npm}
+boxname=${1:-npm}
 
 cat - <<EOMSG
 This script will setup a nodejs development vagrant environment in this directory.
