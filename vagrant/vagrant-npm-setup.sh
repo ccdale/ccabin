@@ -32,6 +32,8 @@ EOMSG
 
 read junk
 
+location=$(dirname $0)
+cp "${location}/vim.tgz" ./
 
 cat - <<'EOCAT' >bootstrap.sh
 #!/bin/bash
